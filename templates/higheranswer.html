@@ -20,32 +20,31 @@
                     Take a guess!
                 </h4>
             </div>
-            <form class="holdInputButton" action="/guess" method="POST">
-                <input type="text" placeholder="Yor guess goes here!" id="userGuesser" name="userGuesser">
-                <button class="submit" type="submit">
-                    Submit
-                </button>
-            </form>
             <div>
-                {% if userGuesser != None: %}
-                    {% if userGuesser == randomNum: %}
+                {% if 'userGuesser' in session: %}
+                    {% if session['guess'] == randomNum %}
                         <div class="card bg-success">
                             <h2>You got the number!</h2>
-                            <a href="/reset" class="pAgain">Play Again</a>
+                            <a href="/reset" class="btn btn-primary">Play Again</a>
                         </div>
-                    {% endif %}
-                    {% if userGuesser < randomNum: %}
+                    {% elif session['guess'] < randomNum %}
                         <div class="card bg-danger">
-                            <h2>Too Low!</h2>
+                            <h2>Too Low!!!</h2>
+                            
                         </div>
-                    {% endif %}
-                    {% if userGuesser > randomNum: %}
+                    {% else %}
                         <div class="card bg-danger">
-                            <h2>Too High!</h2>
+                            <h2>Too High!!!</h2>
                         </div>
                     {% endif %}
                 {% endif %}
             </div>
+            <form class="holdInputButton" action="/guess" method="POST">
+                <input type="text" placeholder="Yor guess goes here!">
+                <button class="submit">
+                    Submit
+                </button>
+            </form>
         </main>
     </body>
 </html>

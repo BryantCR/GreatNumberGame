@@ -34,3 +34,25 @@
     align-content: center;
     align-items: center;
 }
+
+.holdBlockGood{
+    background-color: green;
+    color: white;
+    height: 200px;
+    width: 200px;
+    text-align: center;
+}
+.holdBlockLow{
+    background-color: orange;
+    color: white;
+    height: 200px;
+    width: 200px;
+    text-align: center;
+}
+.holdBlockHigher{
+    background-color: yellow;
+    color: white;
+    height: 200px;
+    width: 200px;
+    text-align: center;
+}
