@@ -27,20 +27,20 @@
                 </button>
             </form>
             <div>
-                {% if userGuesser != None: %}
-                    {% if userGuesser == randomNum: %}
-                        <div class="card bg-success">
+                {% if 'guess' in session: %}
+                    {% if session['userGuess1'] == randomNum: %}
+                        <div>
                             <h2>You got the number!</h2>
                             <a href="/reset" class="pAgain">Play Again</a>
                         </div>
                     {% endif %}
-                    {% if userGuesser < randomNum: %}
-                        <div class="card bg-danger">
+                    {% if session['userGuess1'] < randomNum: %}
+                        <div>
                             <h2>Too Low!</h2>
                         </div>
                     {% endif %}
-                    {% if userGuesser > randomNum: %}
-                        <div class="card bg-danger">
+                    {% if session['userGuess1'] > randomNum: %}
+                        <div>
                             <h2>Too High!</h2>
                         </div>
                     {% endif %}

@@ -10,28 +10,17 @@ app.secret_key = "secret"
 
 @app.route( '/', methods=['GET'] )
 def getRandomNumber():
-    randomNum = random.randint(1, 100)
     if "guess" not in session:
-        session["guess"] = randomNum
-    print(session)
-    print(randomNum)
-    return render_template('/index.html')
+        session["guess"] = random.randint(1, 100)
+        print(session)
+    if request.form['userGuesser'] != False:
+        
+    return render_template('index.html', randomNum = session["guess"])
 
 @app.route('/guess', methods=['POST'])
 def ok():
-    self.getRandomNumber()
-    userGuess1 = int(request.form['userGuesser'])
-    if userGuess1 == randomNum:
-        print("Your done, you got it!")
-        return render_template('/index.html')
-    elif userGuess1 < randomNum:
-        print("Try a little higher")
-        return render_template('/index.html')
-    elif userGuess1 > randomNum:
-        print("Try a little lower")
-        return render_template('/index.html')
-    else:
-        return render_template('/index.html')
+    session['userGuess1'] = int(request.form['userGuesser'])
+    return redirect( '/' )
 
 # @app.route('/guess',methods=['POST'])
 # def userGuess():
